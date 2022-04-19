@@ -1,5 +1,6 @@
 package aplication;
 
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -37,6 +38,16 @@ public class Program {
 				
 				if(capturedPiece != null) {
 					captured.add(capturedPiece);
+				}
+				
+				if(chessMatch.getPromoted() != null) {
+					System.out.print("Para qual peca sera promovida? (B/N/R/Q)");
+					String type = sc.nextLine().toUpperCase();
+					while(!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")) {
+						System.out.print("VALOR INVALIDO! Para qual peca sera promovida? (B/N/R/Q): ");
+						type = sc.nextLine().toUpperCase();
+					}
+					chessMatch.replacePromotedPiece(type);
 				}
 			}
 			catch(ChessException e) {
